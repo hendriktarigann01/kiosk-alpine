@@ -3,9 +3,9 @@
 A simple single-page web app built with **Alpine.js** and **Tailwind CSS**, designed for kiosk display use.  
 This app shows product categories and details in a clean and mobile-style layout.
 
-## 🧰 Tech Stack
+## Tech Stack
 
-- [Alpine.js](https://alpinejs.dev/) —
+- [Alpine.js](https://alpinejs.dev/) 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
 

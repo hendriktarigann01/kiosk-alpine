@@ -7,34 +7,100 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex items-center justify-center h-screen bg-gray-100">
-    <div x-data="kioskPage()" class="w-[360px] h-[640px] bg-white overflow-y-auto rounded-lg shadow-lg">
-      <div class="text-center py-6">
-        <h1 class="text-xl text-gray-700">Catalogue Product</h1>
+    <div
+      x-data="kioskPage()"
+      class="w-[360px] h-[640px] bg-white overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] rounded-lg shadow-lg"
+    >
+      <div class="text-center py-10">
+        <p class="text-lg text-gray-700">Catalogue Product</p>
       </div>
 
-      <div class="px-4 pb-6">
+      <div class="px-4 pb-10">
         <template x-for="(category, idx) in products" :key="idx">
-          <div class="mt-6">
-            <h2 class="text-sm text-gray-600 mb-3" x-text="category.category"></h2>
+          <div>
+            <h2
+              class="text-xs text-gray-600 mb-2 mt-6"
+              x-text="category.category"
+            ></h2>
 
-            <div class="grid grid-cols-2 gap-3">
-              <template x-for="(item, itemIdx) in category.items" :key="itemIdx">
-                <div class="relative">
-                  <div class="bg-gray-200 rounded aspect-square flex items-center justify-center relative">
-                    <div class="w-24 h-24 rounded"
-                      :class="{
-                        'bg-white': item.image === 'white',
-                        'bg-gray-800': item.image === 'black'
-                      }"></div>
-                    <button @click="toggleProduct(idx, itemIdx)" class="absolute top-2 right-2 bg-gray-800 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center hover:bg-gray-700">?</button>
+            <!-- Scroll horizontal pakai Tailwind -->
+            <div
+              class="flex gap-2 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              <template
+                x-for="(item, itemIdx) in category.items"
+                :key="itemIdx"
+              >
+                <div class="relative flex-shrink-0 w-[45%]">
+                  <!-- Product Card -->
+                  <div
+                    class="bg-gray-100 rounded aspect-square flex items-center justify-center relative"
+                  >
+                    <!-- Image Product -->
+                    <img
+                      :src="item.image"
+                      :alt="item.name"
+                      class="w-full h-full object-contain rounded"
+                    />
 
-                    <div x-show="selectedProduct === `${idx}-${itemIdx}`" x-transition
-                      class="absolute top-10 right-2 bg-[#343434]/80 rounded p-3 w-40 shadow-lg">
-                      <p class="text-[10px] text-white mb-1">Material: <span x-text="item.material"></span></p>
-                      <p class="text-[10px] text-white mb-1">Sizes: <span x-text="item.sizes.join(', ')"></span></p>
+                    <!-- Name Product -->
+                    <div class="absolute bottom-1 left-1">
+                      <p
+                        class="text-[8px] text-[#616161] truncate"
+                        x-text="item.name"
+                      ></p>
                     </div>
+
+                    <!-- Info Button -->
+                    <button
+                      @click="toggleProduct(idx, itemIdx)"
+                      class="absolute top-2 right-2 bg-gray-800 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hover:bg-gray-700 z-10"
+                    >
+                      ?
+                    </button>
                   </div>
-                  <p class="text-xs text-gray-600 mt-2 px-1" x-text="item.name"></p>
+
+                  <!-- Tooltip (dipindah keluar dari card) -->
+                  <div
+                    x-show="selectedProduct === `${idx}-${itemIdx}`"
+                    x-transition
+                    class="absolute top-10 right-0 bg-[#343434]/90 rounded p-3 w-48 shadow-lg z-20"
+                  >
+                    <!-- Material -->
+                    <p x-show="item.material" class="text-[10px] text-white mb-1">
+                      Material: <span x-text="item.material"></span>
+                    </p>
+                    
+                    <!-- Sizes -->
+                    <p x-show="item.sizes" class="text-[10px] text-white mb-1">
+                      Sizes: <span x-text="item.sizes?.join(', ')"></span>
+                    </p>
+                    
+                    <!-- Print -->
+                    <p x-show="item.print" class="text-[10px] text-white mb-1">
+                      Print: <span x-text="item.print"></span>
+                    </p>
+                    
+                    <!-- Volume (untuk Water Bottle) -->
+                    <p x-show="item.volume" class="text-[10px] text-white mb-1">
+                      Volume: <span x-text="item.volume"></span>
+                    </p>
+                    
+                    <!-- Type (untuk Hat) -->
+                    <p x-show="item.type" class="text-[10px] text-white mb-1">
+                      Type: <span x-text="item.type"></span>
+                    </p>
+                    
+                    <!-- Design (untuk Keychain & Fridge Magnet) -->
+                    <p x-show="item.design" class="text-[10px] text-white mb-1">
+                      Design: <span x-text="item.design"></span>
+                    </p>
+                    
+                    <!-- Packaging -->
+                    <p x-show="item.packaging" class="text-[10px] text-white mb-1">
+                      Packaging: <span x-text="item.packaging"></span>
+                    </p>
+                  </div>
                 </div>
               </template>
             </div>
