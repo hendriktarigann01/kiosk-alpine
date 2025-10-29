@@ -54,9 +54,9 @@
                     <!-- Info Button -->
                     <button
                       @click="toggleProduct(idx, itemIdx)"
-                      class="absolute top-2 right-2 bg-gray-800 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hover:bg-gray-700 z-10"
+                      class="absolute top-2 right-2 bg-gray-800 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center hover:bg-gray-700 z-10"
                     >
-                      ?
+                      <span class="text-[8px]">?</span>
                     </button>
                   </div>
 
@@ -64,7 +64,7 @@
                   <div
                     x-show="selectedProduct === `${idx}-${itemIdx}`"
                     x-transition
-                    class="absolute top-10 right-0 bg-[#343434]/90 rounded p-3 w-48 shadow-lg z-20"
+                    class="absolute top-7 right-0.5 bg-[#343434]/90 rounded p-3 w-36 shadow-lg z-20"
                   >
                     <!-- Material -->
                     <p x-show="item.material" class="text-[10px] text-white mb-1">
@@ -73,7 +73,7 @@
                     
                     <!-- Sizes -->
                     <p x-show="item.sizes" class="text-[10px] text-white mb-1">
-                      Sizes: <span x-text="item.sizes?.join(', ')"></span>
+                      Size: <span x-text="item.sizes?.join(', ')"></span>
                     </p>
                     
                     <!-- Print -->

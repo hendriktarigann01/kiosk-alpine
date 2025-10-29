@@ -82,14 +82,14 @@ window.kioskPage = function () {
         category: "Hat",
         items: [
           {
-            name: "Topi Baseball",
+            name: "Baseball cap",
             image: "/cap-baseball.png",
-            type: "Topi Baseball, Bordir",
+            type: "Bordir",
           },
           {
-            name: "Topi Bucket",
+            name: "Bucket cap",
             image: "/cap-bucket.png",
-            type: "Topi Bucket, Bordir",
+            type: "Bordir",
           },
         ],
       },
@@ -97,7 +97,7 @@ window.kioskPage = function () {
         category: "Socks",
         items: [
           {
-            name: "Spandex Soks",
+            name: "Spandek Soks",
             image: "/sock.png",
             material: "Spandek, full print",
             packaging: "Kemasan kertas kraft",
@@ -112,7 +112,6 @@ window.kioskPage = function () {
             image: "/keychain-train.png",
             material: "Akrilik Cutting 3mm 3mm cutting",
             sizes: ["4x5cm"],
-            print: "2 muka, gantungan",
             design: "Desain wajah KRL",
           },
           {
@@ -120,7 +119,6 @@ window.kioskPage = function () {
             image: "/keychain-station.png",
             material: "Akrilik Cutting 3mm 3mm cutting",
             sizes: ["5x6,5cm"],
-            print: "2 muka, gantungan",
             design: "Desain wajah KRL",
           },
         ],
